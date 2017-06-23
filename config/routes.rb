@@ -5,8 +5,20 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   resources :groups do
+
+    member do
+      post :join
+      post :quit
+    end
+
     resources :posts
   end
+
+  namespace :account do
+    resources :groups
+    resources :posts
+  end
+
   # root 'welcome#index'
   root 'groups#index'
   # Example of regular route:
